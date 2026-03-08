@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Attendees</string>
+    <string name="app_tagline">Professor Attendance Manager</string>
+    <string name="login_title">Login</string>
+    <string name="email_hint">Enter your email address</string>
+    <string name="password_hint">Enter your password</string>
+    <string name="login_button">Enter</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="no_account">Don\'t have an account? Sign up</string>
+    <string name="dashboard_title">Attendees</string>
+    <string name="add_new_course">Add New Course +</string>
+    <string name="create_new_course">Create New Course</string>
+    <string name="course_title_hint">Enter course title</string>
+    <string name="create_course">Create Course</string>
+    <string name="total_students">Total Students: %1$d</string>
+    <string name="average_attendance">Average Attendance: %1$d%%</string>
+    <string name="view_details">View Details</string>
+    <string name="invalid_credentials">Invalid credentials</string>
+    <string name="field_required">Field required</string>
+</resources>
