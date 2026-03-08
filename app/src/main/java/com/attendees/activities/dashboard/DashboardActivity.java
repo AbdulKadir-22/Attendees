@@ -3,6 +3,7 @@ package com.attendees.activities.dashboard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,6 +59,14 @@ public class DashboardActivity extends AppCompatActivity implements AddCourseDia
     private void loadCourses() {
         courseList.clear();
         courseList.addAll(courseRepository.getAllCourses());
+        
+        TextView emptyState = findViewById(R.id.empty_state_text);
+        if (courseList.isEmpty()) {
+            emptyState.setVisibility(android.view.View.VISIBLE);
+        } else {
+            emptyState.setVisibility(android.view.View.GONE);
+        }
+        
         adapter.notifyDataSetChanged();
     }
 

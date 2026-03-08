@@ -75,9 +75,11 @@ public class AddLectureActivity extends AppCompatActivity {
     private void showTimePicker() {
         Calendar c = Calendar.getInstance();
         new TimePickerDialog(this, (view, hourOfDay, minute) -> {
-            selectedTime = String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute);
+            String amPm = (hourOfDay >= 12) ? "PM" : "AM";
+            int hour = (hourOfDay > 12) ? (hourOfDay - 12) : (hourOfDay == 0 ? 12 : hourOfDay);
+            selectedTime = String.format(Locale.getDefault(), "%02d:%02d %s", hour, minute, amPm);
             timeText.setText(selectedTime);
             timeText.setTextColor(getResources().getColor(R.color.text_primary));
-        }, c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE), true).show();
+        }, c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE), false).show();
     }
 }

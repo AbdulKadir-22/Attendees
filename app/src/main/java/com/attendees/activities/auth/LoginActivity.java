@@ -23,8 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Seed initial data once
-        DatabaseSeeder.seedData(this);
+        // DatabaseSeeder.seedData(this);
 
         emailInput = findViewById(R.id.email_input);
         passwordInput = findViewById(R.id.password_input);
