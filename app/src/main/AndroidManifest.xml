@@ -24,10 +24,9 @@
         <activity android:name=".activities.dashboard.DashboardActivity" />
         <activity android:name=".activities.course.CourseDetailActivity" />
         <activity android:name=".activities.course.CreateCourseActivity" />
-        <activity android:name=".activities.lecture.LectureListActivity" />
         <activity android:name=".activities.lecture.AddLectureActivity" />
+        <activity android:name=".activities.lecture.LectureListActivity" />
         <activity android:name=".activities.student.StudentListActivity" />
-        <activity android:name=".activities.student.AddStudentActivity" />
         <activity android:name=".activities.attendance.MarkAttendanceActivity" />
 
     </application>

@@ -42,6 +42,7 @@ public class DashboardActivity extends AppCompatActivity implements AddCourseDia
         adapter = new CourseAdapter(courseList, course -> {
             Intent intent = new Intent(DashboardActivity.this, CourseDetailActivity.class);
             intent.putExtra("COURSE_ID", course.getCourseId());
+            intent.putExtra("COURSE_NAME", course.getCourseName());
             startActivity(intent);
         });
         recyclerView.setAdapter(adapter);

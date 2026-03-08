@@ -38,9 +38,23 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
         Course course = courseList.get(position);
         holder.courseName.setText(course.getCourseName());
-        // Temporarily hardcoded for Part 2 as requested
-        holder.studentCount.setText(holder.itemView.getContext().getString(R.string.total_students, 0));
-        holder.attendancePercentage.setText(holder.itemView.getContext().getString(R.string.average_attendance, 0));
+        com.attendees.repository.StudentRepository studentRepo = new com.attendees.repository.StudentRepository(holder.itemView.getContext());
+        com.attendees.repository.AttendanceRepository attendanceRepo = new com.attendees.repository.AttendanceRepository(holder.itemView.getContext());
+        
+        int studentCount = studentRepo.getStudentsByCourse(course.getCourseId()).size();
+        int totalLectures = attendanceRepo.getTotalLecturesForCourse(course.getCourseId());
+        
+        int totalPresent = 0;
+        List<com.attendees.models.Student> students = studentRepo.getStudentsByCourse(course.getCourseId());
+        for (com.attendees.models.Student s : students) {
+            totalPresent += attendanceRepo.getPresentCountForStudent(s.getStudentId(), course.getCourseId());
+        }
+        
+        int totalPossible = studentCount * totalLectures;
+        int avgPercentage = (totalPossible > 0) ? (int)(((double)totalPresent / totalPossible) * 100) : 0;
+
+        holder.studentCount.setText(holder.itemView.getContext().getString(R.string.total_students, studentCount));
+        holder.attendancePercentage.setText(holder.itemView.getContext().getString(R.string.average_attendance, avgPercentage));
 
         holder.itemView.setOnClickListener(v -> listener.onCourseClick(course));
         holder.viewDetailsButton.setOnClickListener(v -> listener.onCourseClick(course));
